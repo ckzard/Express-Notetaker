@@ -4,11 +4,25 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server",
+    "watch": "nodemon server"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.17.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ckzard/Express-Notetaker.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/ckzard/Express-Notetaker/issues"
+  },
+  "homepage": "https://github.com/ckzard/Express-Notetaker#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.6"
   }
 }

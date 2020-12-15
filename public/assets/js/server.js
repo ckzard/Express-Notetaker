@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const fs = require("fs");
 const path = require('path');
 const port = process.env.PORT || 8080;
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
@@ -34,13 +34,13 @@ app.get("/notes", (req, res) => {
 
 //reads JSON data notes from db
 app.get("/api/notes", (req, res) => {
-    
-    fs.readFile(path.join(__dirname, '..', '..', '..', 'db/db.json'), (error, data) => {
+    console.log("someone requested")
+    fs.readFileSync(path.join(__dirname, '..', '..', '..', 'db/db.json'), (error, data) => {
         if (error) {
             throw error;
         }
-        console.log(JSON.parse(data))
     })
+    
 })
 
 app.post("/api/notes", (req, res) =>  {

@@ -10,24 +10,24 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //home page
 app.get("/", (req, res) => {
-    fs.readFile(path.join(__dirname, '..', '..', 'index.html'), (error, data) => {
+    fs.readFile(path.join(__dirname, 'public/index.html'), (error, data) => {
         if (error) {
             throw error;
         }
         
-        res.sendFile(path.join(__dirname, "..", "..", "index.html"))
+        res.sendFile(path.join(__dirname, "public/index.html"))
     })
 })
 
 //notes route
 app.get("/notes", (req, res) => {
     
-    fs.readFile(path.join(__dirname, '..', '..', 'notes.html'), (error, data) => {
+    fs.readFile(path.join(__dirname, 'public/notes.html'), (error, data) => {
         if (error) {
             throw error;
         }
         
-        res.sendFile(path.join(__dirname, "..", "..", "notes.html"))
+        res.sendFile(path.join(__dirname, "public/notes.html"))
     })
 })
 
@@ -35,7 +35,7 @@ app.get("/notes", (req, res) => {
 //reads JSON data notes from db
 app.get("/api/notes", (req, res) => {
     console.log("someone requested")
-    fs.readFileSync(path.join(__dirname, '..', '..', '..', 'db/db.json'), (error, data) => {
+    fs.readFileSync(path.join(__dirname, 'db/db.json'), (error, data) => {
         if (error) {
             throw error;
         }
@@ -46,7 +46,7 @@ app.get("/api/notes", (req, res) => {
 app.post("/api/notes", (req, res) =>  {
     
     //read what is in the current database json
-    let currentDBJSON = fs.readFileSync(path.join(__dirname, '..', '..', '..', 'db/db.json'), "utf-8", (error, data) => {
+    let currentDBJSON = fs.readFileSync(path.join(__dirname, 'db/db.json'), "utf-8", (error, data) => {
         if (error) {
             throw error;
         }
@@ -66,7 +66,7 @@ app.post("/api/notes", (req, res) =>  {
     currentDB.push(fileText);
 
     //overwrite database file with new data
-    fs.writeFileSync(path.join(__dirname, '..', '..', '..', 'db/db.json'), JSON.stringify(currentDB, null, 2), () => {
+    fs.writeFileSync(path.join(__dirname, 'db/db.json'), JSON.stringify(currentDB, null, 2), () => {
         console.log("appended...", currentDB);
     })
 })

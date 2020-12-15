@@ -4,18 +4,18 @@ const bodyParser = require('body-parser');
 const fs = require("fs");
 const path = require('path');
 const port = process.env.PORT || 8080;
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 //home page
 app.get("/", (req, res) => {
-    
     fs.readFile(path.join(__dirname, '..', '..', 'index.html'), (error, data) => {
         if (error) {
             throw error;
         }
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.end(data);
+        
+        res.sendFile(path.join(__dirname, "..", "..", "index.html"))
     })
 })
 
@@ -26,8 +26,8 @@ app.get("/notes", (req, res) => {
         if (error) {
             throw error;
         }
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.end(data);
+        
+        res.sendFile(path.join(__dirname, "..", "..", "notes.html"))
     })
 })
 

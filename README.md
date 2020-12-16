@@ -4,6 +4,6 @@
 
 ** It can be accessed here -> https://notetaker-express-x.herokuapp.com/
 
-![Front page](public\assets\css\images\addnote.png)
+![Front page](public/assets/css/images/frontpage.png)
 
 ![Add note page](public\assets\css\images\addnote.png)

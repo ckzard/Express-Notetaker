@@ -44,11 +44,9 @@ app.get("/api/notes", (req, res) => {
     })
     res.send(notes);
     console.log(notes);
-    
 })
 
 app.post("/api/notes", (req, res) =>  {
-    console.log(JSON.stringify(req.body.value))
     //read what is in the current database json
     let currentDBJSON = fs.readFileSync(path.join(__dirname, 'db/db.json'), "utf-8", (error, data) => {
         if (error) {
@@ -57,20 +55,10 @@ app.post("/api/notes", (req, res) =>  {
     })
     //convert data into a javascript object to manipulate
     let currentDB = JSON.parse(currentDBJSON);
-    currentDB.push((req.body));
+    var noteMain = {title : req.body.title, text : req.body.text, id : currentDB.length + 1} 
+    console.log(noteMain);
+    currentDB.push((noteMain));
 
-    // take post data and push it to js db object
-    // var textTitle = req.body.title;
-    // var textMain =  req.body.text;
-    // var fileText = {"title": textTitle,"text":textMain, "id" : currentDB.length};
-
-    //checking if user missed either the title or text before adding to db
-    // if (!fileText.title || !fileText.text) {
-    //     return;
-    // }
-    // currentDB.push(fileText);
-
-    //overwrite database file with new data
     fs.writeFileSync(path.join(__dirname, 'db/db.json'), JSON.stringify(currentDB, null, 2), () => {
         console.log("appended...", currentDB);
     })

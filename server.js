@@ -35,11 +35,14 @@ app.get("/notes", (req, res) => {
 //reads JSON data notes from db
 app.get("/api/notes", (req, res) => {
     console.log("someone requested")
-    fs.readFileSync(path.join(__dirname, 'db/db.json'), (error, data) => {
+    let notes = fs.readFileSync('db/db.json', 'utf-8', (error, data) => {
         if (error) {
             throw error;
         }
+        
     })
+    res.send(notes);
+    console.log(notes);
     
 })
 

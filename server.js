@@ -62,6 +62,28 @@ app.post("/api/notes", (req, res) =>  {
     res.sendFile(path.join(__dirname, "notes.html"));
 })
 
+app.delete("/api/notes/:id", (req, res) => {
+    console.log(req.params.id);
+    let currentDBJSON = fs.readFileSync(path.join(__dirname, 'db/db.json'), "utf-8", (error, data) => {
+        if (error) {
+            throw error;
+        }
+    })
+
+    // convert data into a javascript object to manipulate
+    let currentDB = JSON.parse(currentDBJSON);
+    currentDB.forEach(element => {
+        if (element.id == req.params.id) {
+            let index = currentDB.indexOf(element);
+            currentDB.splice(index, 1);
+        }
+        console.log(currentDB)
+    });
+    fs.writeFileSync(path.join(__dirname, 'db/db.json'), JSON.stringify(currentDB, null, 2), () => {
+    })
+    res.sendFile(path.join(__dirname, "public/notes.html"));
+})
+
 app.listen(port, () => {
     console.log(`"Listening on port", ${port}`)
 })

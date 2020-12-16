@@ -10,4 +10,6 @@
 
 ![Add note page](public/assets/css/images/addnote.png)
 
-**To access saved notes click the text of the notes saved on the left hand side**
+**To access saved notes click the text of the notes saved on the left hand side.**
+
+**You can also delete any saved notes by clicking the trash can icon next to each note.**

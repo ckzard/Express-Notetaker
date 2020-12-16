@@ -6,4 +6,4 @@
 
 ![Front page](public/assets/css/images/frontpage.png)
 
-![Add note page](public\assets\css\images\addnote.png)
+![Add note page](public/assets/css/images/addnote.png)

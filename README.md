@@ -6,4 +6,8 @@
 
 ![Front page](public/assets/css/images/frontpage.png)
 
+**To add a note simply click the pencil icon in the top right corner, type the title in one box and the content in the next then press the save button that now appears next to the pencil**
+
 ![Add note page](public/assets/css/images/addnote.png)
+
+**To access saved notes click the text of the notes saved on the left hand side**

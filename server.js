@@ -5,6 +5,7 @@ const fs = require("fs");
 const path = require('path');
 const port = process.env.PORT || 8080;
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json({limit: '1mb'}));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
@@ -56,7 +57,7 @@ app.post("/api/notes", (req, res) =>  {
     })
     //convert data into a javascript object to manipulate
     let currentDB = JSON.parse(currentDBJSON);
-    currentDB.push(req.body);
+    currentDB.push((req.body));
 
     // take post data and push it to js db object
     // var textTitle = req.body.title;

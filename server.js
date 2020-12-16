@@ -43,7 +43,6 @@ app.get("/api/notes", (req, res) => {
         
     })
     res.send(notes);
-    console.log(notes);
 })
 
 app.post("/api/notes", (req, res) =>  {
@@ -56,16 +55,13 @@ app.post("/api/notes", (req, res) =>  {
     //convert data into a javascript object to manipulate
     let currentDB = JSON.parse(currentDBJSON);
     var noteMain = {title : req.body.title, text : req.body.text, id : currentDB.length + 1} 
-    console.log(noteMain);
     currentDB.push((noteMain));
 
     fs.writeFileSync(path.join(__dirname, 'db/db.json'), JSON.stringify(currentDB, null, 2), () => {
-        console.log("appended...", currentDB);
     })
     res.sendFile(path.join(__dirname, "notes.html"));
 })
 
 app.listen(port, () => {
     console.log(`"Listening on port", ${port}`)
-    console.log(__dirname)
 })

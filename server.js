@@ -72,6 +72,7 @@ app.post("/api/notes", (req, res) =>  {
     fs.writeFileSync(path.join(__dirname, 'db/db.json'), JSON.stringify(currentDB, null, 2), () => {
         console.log("appended...", currentDB);
     })
+    res.sendFile(path.join(__dirname, "notes.html"));
 })
 
 app.listen(port, () => {
